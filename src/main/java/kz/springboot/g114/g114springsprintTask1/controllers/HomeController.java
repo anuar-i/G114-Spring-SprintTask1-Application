@@ -32,36 +32,10 @@ public class HomeController {
   }
 
 
-//
-//  @GetMapping("/search")
-//  public String showSearchForm() {
-//    System.out.println("qqq");
-//    return "search";
-//  }
-//
-//  @PostMapping("/search")
-//  public String performSearch(@RequestParam("query") String query, Model model) {
-//    // Add your search logic here
-//    model.addAttribute("query", DBManager.getStudentBySurname(query));
-//    System.out.println("asddsd");
-//    System.out.println(DBManager.getStudentBySurname(query)+" ASDASD");
-//    System.out.println(DBManager.getStudentBySurname(query));
-//    // Pass the search results to the view
-//    //model.addAttribute("query", query);
-//    // Add the necessary attributes to display the search results
-//    return "search";
-//  }
-
   @GetMapping("/search")
   public String search(@RequestParam("keyword") String keyword, Model model) {
-    // Здесь можно выполнить логику поиска, например, получить результаты из базы данных
-   // List<Student> searchResults = // Ваш код для поиска студентов по ключевому слову
-    //List<Student> searchResults =
-    System.out.println("llll");
     model.addAttribute("searchResults", DBManager.getStudentByKeyName(keyword));
-    System.out.println(DBManager.getStudentByKeyName(keyword));
+    System.out.println(DBManager.getStudentByKeyName(keyword).size());
     return "search_results";
   }
-
-
 }

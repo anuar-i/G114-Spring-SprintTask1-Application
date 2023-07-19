@@ -7,30 +7,7 @@
 </head>
 <body>
 <h1 class="text-center" color="green">G114 Spring Framework exam Grades 2023</h1>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand" href="/">Student list</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/add-student">Add Student</a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search" th:action="${'/search'}" method="get">
-        <input class="form-control me-2" type="text" placeholder="Search" name="keyword" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav>
-
+<div th:insert="~{navbar}"></div>
 <table class="table table-striped table-bordered" style="width:1600px">
   <thead>
   <th>ID</th>
@@ -41,12 +18,12 @@
   </thead>
   <tbody>
   <tr th:each="student : ${searchResults}">
-    <td th:text="${searchResults.id}" class="card-title pricing-card-title"></td>
-    <td th:text="${searchResults.name}"></td>
-    <td th:text="${searchResults.surname}"></td>
-    <td th:text="${searchResults.exam}"></td>
-    <td th:text="${searchResults.mark}" th:style="${searchResults.mark == 'A'} ?
-      'color: blue' : (${searchResults.mark == 'F'} ? 'color: tomato' : 'color: black')"></td>
+    <td th:text="${student.id}" class="card-title pricing-card-title"></td>
+    <td th:text="${student.name}"></td>
+    <td th:text="${student.surname}"></td>
+    <td th:text="${student.exam}"></td>
+    <td th:text="${student.mark}" th:style="${student.mark == 'A'} ?
+      'color: blue' : (${student.mark == 'F'} ? 'color: tomato' : 'color: black')"></td>
   </tr>
   </tbody>
 </table>
